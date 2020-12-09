@@ -1,26 +1,28 @@
 import React, { Component } from "react";
-import { Route, Switch, Link } from "react-router-dom";
+import { Route, Switch, Link, BrowserRouter as Router } from "react-router-dom";
 import "../styles/App.css";
-import About from "./About";
-import Home from "./About";
-import LocationDisplayComponent from "./LocationDisplayComponent";
+import LocationDisplay from "./LocationDisplay";
 
 class App extends Component {
   render() {
     return (
       <div id="main">
-        <Link to="/about">About</Link>
-        <Link to="/"> Home</Link>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/about" component={About} />
-          <Route path="/" component={() => <div>No match</div>} />
-        </Switch>
-
-        <LocationDisplayComponent />
+        <Router>
+          <Link to="/"> Home</Link>
+          <Link to="/about">About</Link>
+          <Switch>
+            <Route path="/" exact component={() => <div>You are Home.</div>} />
+            <Route
+              path="/about"
+              exact
+              component={() => <div>You are on the about page.</div>}
+            />
+            <Route path="/" component={() => <div>No match</div>} />
+          </Switch>
+        </Router>
+        <LocationDisplay />
       </div>
     );
   }
 }
-export { Home, About, LocationDisplayComponent };
 export default App;
