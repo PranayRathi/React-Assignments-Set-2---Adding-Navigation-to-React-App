@@ -1,8 +1,21 @@
 import React, { Component } from "react";
-import { Route, Switch, Link, BrowserRouter as Router } from "react-router-dom";
+import {
+  Route,
+  Switch,
+  Link,
+  BrowserRouter as Router,
+  useLocation
+} from "react-router-dom";
 import "../styles/App.css";
-import LocationDisplay from "./LocationDisplay";
-
+//import LocationDisplay from "./LocationDisplay";
+const LocationDisplay = () => {
+  const location = useLocation();
+  return (
+    <>
+      <div data-testid="location-display">{location.pathname}</div>
+    </>
+  );
+};
 class App extends Component {
   render() {
     return (
